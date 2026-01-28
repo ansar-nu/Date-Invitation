@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Museum Date?</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #fdf2f8;
+            font-family: 'Segoe UI', sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        #gif-container img {
+            width: 250px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+
+        .buttons {
+            display: flex;
+            /* Flex-wrap ensures buttons move to the next line if they get too big */
+            flex-wrap: wrap; 
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            max-width: 100%;
+        }
+
+        button {
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.1s ease; /* Smooth size transition */
+        }
+
+        #yesBtn {
+            background-color: #10b981;
+            color: white;
+            padding: 15px 30px;
+            font-size: 18px;
+        }
+
+        #noBtn {
+            background-color: #ef4444;
+            color: white;
+            padding: 15px 30px;
+            font-size: 18px;
+        }
+
+        #celebration { display: none; }
+    </style>
+</head>
+<body>
+
+    <div id="main-content">
+        <div id="gif-container">
+            <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMWVxM3ppbGRqeXpieTkzMWppZWtoNHg5bTBtbGl6MjRxMHljaGhqbSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/KztT2c4u8mYYUiMKdJ/giphy.gif" alt="Cute GIF">
+        </div>
+        
+        <h1>Sunday Museum Date?</h1>
+
+        <div class="buttons">
+            <button id="yesBtn">Yes</button>
+            <button id="noBtn">No</button>
+        </div>
+    </div>
+
+    <div id="celebration">
+        <h1>Yay! See you on Friday hehe!</h1>
+        <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExaGdwbWd5a2wzZG9hemNpdHo5c2w4MWl2OTRjYTBmazR0bmhnbzE3aiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/OuQmhmAAdJFLi/giphy.gif" alt="Happy GIF" alt="Happy GIF">
+    </div>
+
+    <script>
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        const mainContent = document.getElementById('main-content');
+        const celebration = document.getElementById('celebration');
+
+        let paddingVal = 15;
+        let fontSizeVal = 18;
+
+        noBtn.addEventListener('click', () => {
+            // Increase padding and font size to physically push other elements
+            paddingVal += 15;
+            fontSizeVal += 10;
+
+            yesBtn.style.padding = `${paddingVal}px ${paddingVal * 2}px`;
+            yesBtn.style.fontSize = `${fontSizeVal}px`;
+            
+            // Optional funny text changes
+            const phrases = ["No", "Are you sure?", "Pweeease?", "Wrong button!", "Last chance!"];
+            noBtn.innerText = phrases[Math.min(Math.floor(paddingVal/15), phrases.length - 1)];
+        });
+
+        yesBtn.addEventListener('click', () => {
+            mainContent.style.display = 'none';
+            celebration.style.display = 'block';
+        });
+    </script>
+
+</body>
+</html>
